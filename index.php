@@ -11,8 +11,10 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+			if($event['message']['text']=='userId'){
 			// Get text sent
-			$text = $event['message']['text']. "\r\n".json_encode($event['source']['userId']);
+			//$text = $event['message']['text']. "\r\n".json_encode($event['source']['userId']);
+			$text = 'userId = '.json_encode($event['source']['userId']);
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
@@ -41,6 +43,7 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 			
 			echo $result . "\r\n";
+			}
 		}
 	}
 }
