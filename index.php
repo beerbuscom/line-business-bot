@@ -12,7 +12,7 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			$text = $event['message']['text']. "\r\n".$event['replyToken'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
 			curl_close($ch);
-			echo $access_token. "\r\n";
+			
 			echo $result . "\r\n";
 		}
 	}
