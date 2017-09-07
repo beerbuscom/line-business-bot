@@ -1,4 +1,10 @@
 <?php
+$messages = [
+				'type' => 'text',
+				'text' => '555'
+			];
+
+print_r($messages);exit();
 $access_token = 'eF1ERIEGeVZTqewnN/40ZB29z+ymgX5as0il48qpuviVbhSQkETK7SbZRf3ugvuLFbyNDQbEnUQ4Ug2ePTiTr13ohmw5faJJmZTCSrA4Rru1wRN3O7Yz6Lp8DRDCS90MhlHPwDDBldQe/auHMfjODgdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
