@@ -11,10 +11,10 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			if($event['message']['text']=='userId'){
+			if(strtolower($event['message']['text'])=='userid'){
 			// Get text sent
 			//$text = $event['message']['text']. "\r\n".json_encode($event['source']['userId']);
-			$text = 'userId = '.json_encode($event['source']['userId']);
+			$text = 'userId = '.json_encode($event['source']['userId']).'\r\n'.json_encode($event);
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
