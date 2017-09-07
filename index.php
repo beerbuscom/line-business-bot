@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 			if(strtolower($event['message']['text'])=='userid'){
 			// Get text sent
 			//$text = $event['message']['text']. "\r\n".json_encode($event['source']['userId']);
-			$text = 'userId = '.json_encode($event['source']['userId']).'\r\n'.json_encode($event);
+			$text = 'userId = '.json_encode($event['source']['userId'])."\r\n".json_encode($event);
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
