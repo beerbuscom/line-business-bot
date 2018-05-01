@@ -48,6 +48,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+echo '1234';
 ?>
 
 
