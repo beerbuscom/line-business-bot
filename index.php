@@ -227,7 +227,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-
+echo 'DATA='; print_r($events);exit();
 
 $strAccessToken = $events[AccessToken];
 
