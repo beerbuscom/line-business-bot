@@ -2,32 +2,7 @@
 
 
 
-function getProfile($access_token,$userID){
-    
 
-	$arrHeader = array();
-	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$access_token}";
-	
-	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,'https://api.line.me/v2/bot/profile/'.$userID);
-	//curl_setopt($ch, CURLOPT_HEADER, false);
-	//curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-	//curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	
-	
-	
-	
-	$result = curl_exec($ch);
-	//echo curl_error($ch);	
-	curl_close ($ch);
-	
-	return ($result);
-}
 
 function pushMessage_text($access_token,$userID,$text){
     
@@ -95,129 +70,9 @@ function pushMessage_sticker($access_token,$userID,$packageId,$stickerId){
 	
 	return ($result);
 }
-function pushMessage_template_image_carousel($access_token,$userID,$arrayData){
-	
-	/*$json = '{
-				  "type": "template",
-				 
-				  "template": {
-				      "type": "image_carousel",
-				      "columns": [
-				          {
-				            "imageUrl": "http://www.catster.com/wp-content/uploads/2017/08/Pixiebob-cat.jpg",
-				            "action": {
-				              "type": "postback",
-				              "label": "Buy",
-				              "data": "action=buy&itemid=111"
-				            }
-				          }
-				          
-				      ]
-				  }
-				}';*/
-    
-    				/*$arrayData[]=array(
-									imageUrl=>'http://www.catster.com/wp-content/uploads/2017/08/Pixiebob-cat.jpg',
-									action=>array(type=>'uri',label=>'View detail',uri=>'http://example.com/page/222')
-					);
-					$arrayData[]=array(
-									imageUrl=>'http://www.catster.com/wp-content/uploads/2017/08/Pixiebob-cat.jpg',
-									action=>array(type=>'uri',label=>'View detail',uri=>'http://example.com/page/222')
-					);
-					pushMessage_template($strAccessToken,$userID,$arrayData);*/
-
-	$arrHeader = array();
-	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$access_token}";
-	
-
-	$arrPostData = array();
-	$arrPostData['to'] = $userID;
-	$arrPostData['messages'][0]['type'] = "template";
-	$arrPostData['messages'][0]['altText'] = "this is a image carousel template";
-	$arrPostData['messages'][0]['template']['type'] = "image_carousel";
-	$arrPostData['messages'][0]['template']['columns'] = $arrayData;
-
-
-	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,'https://api.line.me/v2/bot/message/push');
-	curl_setopt($ch, CURLOPT_HEADER, false);
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	
-	
-	
-	
-	$result = curl_exec($ch);
-	//echo curl_error($ch);	
-	curl_close ($ch);
-	
-	return ($result);
-}
-
-function pushMessage_template_carousel($access_token,$userID,$arrayData){
-/*
-		{
-				  "type": "template",
-				  "altText": "this is a carousel template",
-				  "template": {
-				    "type": "carousel",
-				    "actions": [],
-				    "columns": [
-				      {
-				        "title": "ลงทะเบียน",
-				        "text": "คลิกที่ปุ่มลง",
-				        "actions": [
-				          {
-				            "type": "uri",
-				            "label": "ลงทะเบียน",
-				            "uri": "https://www.google.com/"
-				          }
-				        ]
-				      }
-				    ]
-				  }
-				}*/
 
 
 
-	$arrHeader = array();
-	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$access_token}";
-	
-
-	$arrPostData = array();
-	$arrPostData['to'] = $userID;
-	$arrPostData['messages'][0]['type'] = "template";
-	$arrPostData['messages'][0]['altText'] = "this is a image carousel template";
-	$arrPostData['messages'][0]['template']['type'] = "carousel";
-	$arrPostData['messages'][0]['template']['actions'] = array();
-	$arrPostData['messages'][0]['template']['columns'] = $arrayData;
-
-
-	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,'https://api.line.me/v2/bot/message/push');
-	curl_setopt($ch, CURLOPT_HEADER, false);
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	
-	
-	
-	
-	$result = curl_exec($ch);
-	//echo curl_error($ch);	
-	curl_close ($ch);
-	
-	return ($result);
-}
 
 
 
@@ -227,7 +82,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-echo 'DATA='; print_r($events);exit();
+
 
 $strAccessToken = $events[AccessToken];
 
