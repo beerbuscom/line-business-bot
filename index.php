@@ -167,7 +167,11 @@ fwrite($objFopen, $strText1);
 fclose($objFopen);*/
 //////บันทึกข้อมูลที่ส่งมา//////////////
 	
-	
+		
+
+}
+
+
 define('LINE_API',"https://notify-api.line.me/api/notify");
  
 $token = $_GET[LINE_Token]; //ใส่Token ที่copy เอาไว้
@@ -192,7 +196,4 @@ function notify_message($message,$token){
  $res = json_decode($result);
  return $res;
 }	
-	
-
-}
 ?>
